@@ -61,16 +61,16 @@ class divideDataSet:
         # print(list)
         flag = self.checkFileisExist()
         if flag == False: return 'moveFile Failed'
-        for malFamily in list:                                              # 对train文件夹下的每个子文件夹，随机取出EXTRACT_RATIO比例的文件放入validation文件夹中
-            file_abs_path = self.origin_path + "\\" + malFamily
+        for Family in list:                                              # 对train文件夹下的每个子文件夹，随机取出EXTRACT_RATIO比例的文件放入validation文件夹中
+            file_abs_path = self.origin_path + "\\" + Family
             pathDir = readFilenameList(file_abs_path)
             filenumber = len(pathDir)
             picknumber = int(filenumber * self.EXTRACT_RATIO)
             sample = random.sample(pathDir, picknumber)
             # print(sample)
             for name in sample:
-                shutil.move(self.origin_path + '\\' + malFamily + '\\' + name,
-                            self.goal_path + '\\' + malFamily + '\\' + name)
+                shutil.move(self.origin_path + '\\' + Family + '\\' + name,
+                            self.goal_path + '\\' + Family + '\\' + name)
         return 'moveFile Succeed!'
 
 if __name__ == '__main__':
